@@ -2,6 +2,16 @@
 
 A Home Assistant Add-on that creates a Matter 1.5 compliant virtual camera device. This add-on transcodes video sources (YouTube URLs or local MP4 files) into WebRTC streams compatible with Apple Home, Google Home, and Home Assistant.
 
+## ⚠️ Important: Installation Time
+
+**The first installation takes 20-30 minutes** as it compiles the Matter 1.5 camera application from source using the official connectedhomeip SDK. This is NOT a typical add-on installation.
+
+- ⏱️ **First install**: 20-30 minutes (compiling C++ code)
+- 🔄 **Updates**: Much faster due to Docker layer caching
+- 💾 **Disk space**: ~2GB during build, ~500MB after
+
+**Please be patient during the initial installation. The add-on is building a complete Matter device from the official SDK.**
+
 ## Features
 
 - **Matter 1.5 Compliance**: Native Matter camera device type using official connectedhomeip SDK
