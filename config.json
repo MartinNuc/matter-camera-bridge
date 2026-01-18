@@ -24,6 +24,5 @@
   },
   "schema": {
     "youtube_url": "url"
-  },
-  "image": "ghcr.io/{arch}-matter-camera"
+  }
 }
