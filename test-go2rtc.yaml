@@ -1,0 +1,18 @@
+streams:
+  test_stream:
+    # Simple test pattern (instant, no internet needed)
+    - ffmpeg:device?video=testsrc&audio=sine#video=h264#audio=opus
+    
+    # Or use YouTube (uncomment to use instead):
+    # - exec:bash -c 'yt-dlp -f best -g "https://www.youtube.com/watch?v=jfKfPfyJRdk" | head -1 | xargs -I {} ffmpeg -re -i {} -c:v libx264 -preset ultrafast -tune zerolatency -profile:v baseline -level 3.0 -pix_fmt yuv420p -g 30 -keyint_min 30 -sc_threshold 0 -b:v 2M -maxrate 2M -bufsize 4M -c:a aac -b:a 128k -ar 48000 -ac 2 -f rtsp -rtsp_transport tcp rtsp://localhost:8554/test_stream'
+
+api:
+  listen: ":1984"
+
+webrtc:
+  listen: ":8555"
+  candidates:
+    - stun:stun.l.google.com:19302
+
+log:
+  level: debug

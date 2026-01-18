@@ -1,0 +1,15 @@
+streams:
+  test_stream:
+    # Use RTSP test server built into go2rtc
+    - rtsp://rtsp.stream/pattern
+
+api:
+  listen: ":1984"
+
+webrtc:
+  listen: ":8555"
+  candidates:
+    - stun:stun.l.google.com:19302
+
+log:
+  level: debug

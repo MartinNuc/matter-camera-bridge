@@ -1,0 +1,33 @@
+name: Matter 1.5 Virtual Camera
+version: "1.0.0"
+slug: matter_camera
+description: Matter 1.5 compliant virtual camera bridge with WebRTC support
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+init: false
+ports:
+  5540/udp: 5540
+  1984/tcp: 1984
+  8555/udp: 8555
+ports_description:
+  5540/udp: Matter protocol
+  1984/tcp: go2rtc API
+  8555/udp: WebRTC ICE
+options:
+  video_source: "youtube"
+  youtube_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  video_file: "video.mp4"
+  matter_vendor_id: 65521
+  matter_product_id: 32768
+schema:
+  video_source: list(youtube|file)
+  youtube_url: str
+  video_file: str
+  matter_vendor_id: int(0,65535)
+  matter_product_id: int(0,65535)
+map:
+  - share:rw

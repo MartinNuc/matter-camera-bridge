@@ -1,0 +1,29 @@
+{
+  "name": "Matter Camera Bridge",
+  "version": "1.0.0",
+  "slug": "matter-camera",
+  "description": "Matter 1.5 Virtual Camera Bridge with go2rtc streaming",
+  "arch": ["aarch64", "amd64"],
+  "startup": "application",
+  "boot": "auto",
+  "host_network": true,
+  "ports": {
+    "1984/tcp": 1984,
+    "5540/tcp": 5540,
+    "8554/tcp": 8554,
+    "8555/udp": 8555
+  },
+  "ports_description": {
+    "1984/tcp": "go2rtc Web UI",
+    "5540/tcp": "Matter device port",
+    "8554/tcp": "RTSP server",
+    "8555/udp": "WebRTC"
+  },
+  "options": {
+    "youtube_url": "https://www.youtube.com/watch?v=jfKfPfyJRdk"
+  },
+  "schema": {
+    "youtube_url": "url"
+  },
+  "image": "ghcr.io/{arch}-matter-camera"
+}

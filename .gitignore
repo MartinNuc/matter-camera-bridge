@@ -1,0 +1,19 @@
+# Build artifacts
+node_modules/
+dist/
+*.log
+bin/
+test-data/
+
+# OS files
+.DS_Store
+
+# Matter storage
+.matter-storage/
+/tmp/
+
+# Config files that may contain secrets
+options.json
+
+# Docker volumes
+data/
