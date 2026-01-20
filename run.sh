@@ -31,8 +31,8 @@ fi
 echo "go2rtc started successfully (PID: $GO2RTC_PID)"
 
 echo ""
-echo "Starting Matter light (port 5540, discriminator 3840)..."
-/app/matter-light --discriminator 3840 --passcode 20202021 --KVS /tmp/chip_kvs_light &
+echo "Starting Matter light (port 5540, discriminator 3000)..."
+/app/matter-light --discriminator 3000 --passcode 20202021 --KVS /tmp/chip_kvs_light &
 LIGHT_PID=$!
 
 sleep 2
