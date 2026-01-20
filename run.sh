@@ -3,6 +3,14 @@ set -e
 
 echo "Starting Matter 1.5 Virtual Camera Bridge..."
 
+# Run IPv6 diagnostics
+if [ -f /app/check-ipv6.sh ]; then
+    echo ""
+    echo "Running IPv6 diagnostics..."
+    bash /app/check-ipv6.sh
+    echo ""
+fi
+
 go2rtc -config /app/go2rtc.yaml &
 GO2RTC_PID=$!
 

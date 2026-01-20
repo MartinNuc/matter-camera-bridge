@@ -108,7 +108,8 @@ COPY --from=app-builder /app/matter-camera-bridge /app/matter-camera-bridge
 # Copy runtime files
 COPY go2rtc.yaml /app/go2rtc.yaml
 COPY run.sh /run.sh
+COPY check-ipv6.sh /app/check-ipv6.sh
 
-RUN chmod +x /run.sh /app/matter-camera-bridge
+RUN chmod +x /run.sh /app/matter-camera-bridge /app/check-ipv6.sh
 
 CMD ["/run.sh"]
