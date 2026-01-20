@@ -32,11 +32,11 @@ echo "go2rtc started successfully (PID: $GO2RTC_PID)"
 
 echo ""
 echo "Starting Matter light (port 5540, discriminator 3840)..."
-/app/matter-light --discriminator 3840 --passcode 20202021 &
+/app/matter-light --discriminator 3840 --passcode 20202021 --KVS /tmp/chip_kvs_light &
 LIGHT_PID=$!
 
 sleep 2
 
 echo ""
 echo "Starting Matter camera (port 5542, discriminator 3841)..."
-exec /app/matter-camera-bridge --discriminator 3841 --passcode 20202021 --secured-device-port 5542
+exec /app/matter-camera-bridge --discriminator 3841 --passcode 20202021 --secured-device-port 5542 --KVS /tmp/chip_kvs_camera

@@ -48,11 +48,12 @@ RUN git submodule update --init --depth 1
 RUN ./scripts/checkout_submodules.py --shallow --platform linux
 RUN bash ./scripts/bootstrap.sh
 
-# Pre-build the SDK base, camera-app, and lighting-app (this is the expensive part we want to cache)
+# Pre-build the SDK base, camera-app, lighting-app, and chip-tool (this is the expensive part we want to cache)
 RUN bash -c 'source ./scripts/activate.sh && \
     export NINJA_FLAGS="-j2" && \
     scripts/examples/gn_build_example.sh examples/camera-app/linux out/camera-app chip_config_network_layer_ble=false && \
-    scripts/examples/gn_build_example.sh examples/lighting-app/linux out/lighting-app chip_config_network_layer_ble=false'
+    scripts/examples/gn_build_example.sh examples/lighting-app/linux out/lighting-app chip_config_network_layer_ble=false && \
+    scripts/examples/gn_build_example.sh examples/chip-tool out/chip-tool chip_config_network_layer_ble=false'
 
 # Stage 2: Build our camera bridge app (changes frequently)
 FROM sdk-builder AS app-builder
@@ -109,6 +110,7 @@ WORKDIR /app
 # Copy compiled binaries from builder
 COPY --from=app-builder /app/matter-camera-bridge /app/matter-camera-bridge
 COPY --from=app-builder /app/matter-light /app/matter-light
+COPY --from=app-builder /app/chip-tool /app/chip-tool
 
 # Copy runtime files
 COPY go2rtc.yaml /app/go2rtc.yaml
@@ -116,6 +118,6 @@ COPY run.sh /run.sh
 COPY check-ipv6.sh /app/check-ipv6.sh
 COPY test-matter-connection.sh /app/test-matter-connection.sh
 
-RUN chmod +x /run.sh /app/matter-camera-bridge /app/matter-light /app/check-ipv6.sh /app/test-matter-connection.sh
+RUN chmod +x /run.sh /app/matter-camera-bridge /app/matter-light /app/chip-tool /app/check-ipv6.sh /app/test-matter-connection.sh
 
 CMD ["/run.sh"]
