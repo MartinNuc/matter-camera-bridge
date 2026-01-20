@@ -48,10 +48,11 @@ RUN git submodule update --init --depth 1
 RUN ./scripts/checkout_submodules.py --shallow --platform linux
 RUN bash ./scripts/bootstrap.sh
 
-# Pre-build the SDK base and camera-app (this is the expensive part we want to cache)
+# Pre-build the SDK base, camera-app, and lighting-app (this is the expensive part we want to cache)
 RUN bash -c 'source ./scripts/activate.sh && \
     export NINJA_FLAGS="-j2" && \
-    scripts/examples/gn_build_example.sh examples/camera-app/linux out/camera-app chip_config_network_layer_ble=false'
+    scripts/examples/gn_build_example.sh examples/camera-app/linux out/camera-app chip_config_network_layer_ble=false && \
+    scripts/examples/gn_build_example.sh examples/lighting-app/linux out/lighting-app chip_config_network_layer_ble=false'
 
 # Stage 2: Build our camera bridge app (changes frequently)
 FROM sdk-builder AS app-builder
