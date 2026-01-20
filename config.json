@@ -1,6 +1,6 @@
 {
   "name": "Matter Camera Bridge",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "slug": "matter-camera",
   "description": "Matter 1.5 Camera + Light devices with go2rtc streaming",
   "arch": ["aarch64", "amd64"],

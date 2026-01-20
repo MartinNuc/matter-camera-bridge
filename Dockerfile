@@ -106,8 +106,9 @@ RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o 
 
 WORKDIR /app
 
-# Copy compiled binary from builder
+# Copy compiled binaries from builder
 COPY --from=app-builder /app/matter-camera-bridge /app/matter-camera-bridge
+COPY --from=app-builder /app/matter-light /app/matter-light
 
 # Copy runtime files
 COPY go2rtc.yaml /app/go2rtc.yaml
@@ -115,6 +116,6 @@ COPY run.sh /run.sh
 COPY check-ipv6.sh /app/check-ipv6.sh
 COPY test-matter-connection.sh /app/test-matter-connection.sh
 
-RUN chmod +x /run.sh /app/matter-camera-bridge /app/check-ipv6.sh /app/test-matter-connection.sh
+RUN chmod +x /run.sh /app/matter-camera-bridge /app/matter-light /app/check-ipv6.sh /app/test-matter-connection.sh
 
 CMD ["/run.sh"]
