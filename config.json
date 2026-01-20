@@ -1,6 +1,6 @@
 {
   "name": "Matter Camera Bridge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "slug": "matter-camera",
   "description": "Matter 1.5 Virtual Camera Bridge with go2rtc streaming",
   "arch": ["aarch64", "amd64"],

@@ -91,6 +91,9 @@ RUN apt-get update && apt-get install -y \
     libavformat60 \
     libavutil58 \
     libcurl4 \
+    iproute2 \
+    iputils-ping \
+    net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # Install go2rtc and yt-dlp
