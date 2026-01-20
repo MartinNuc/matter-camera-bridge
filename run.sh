@@ -11,6 +11,13 @@ if [ -f /app/check-ipv6.sh ]; then
     echo ""
 fi
 
+# Run connection test
+if [ -f /app/test-matter-connection.sh ]; then
+    echo ""
+    bash /app/test-matter-connection.sh
+    echo ""
+fi
+
 go2rtc -config /app/go2rtc.yaml &
 GO2RTC_PID=$!
 
