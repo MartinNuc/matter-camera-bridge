@@ -106,6 +106,10 @@ RUN curl -L https://github.com/AlexxIT/go2rtc/releases/latest/download/go2rtc_li
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
     && chmod a+rx /usr/local/bin/yt-dlp
 
+# Install deno for yt-dlp JavaScript runtime
+RUN curl -fsSL https://deno.land/install.sh | sh \
+    && mv /root/.deno/bin/deno /usr/local/bin/deno
+
 WORKDIR /app
 
 # Copy compiled binaries from builder
