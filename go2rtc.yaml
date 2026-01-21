@@ -2,6 +2,18 @@ streams:
   youtube_stream:
     # YouTube live stream - lofi hip hop radio
     - exec:bash -c 'URL=$(yt-dlp -f best -g "https://www.youtube.com/watch?v=jfKfPfyJRdk" | head -1); ffmpeg -re -i "$URL" -c:v libx264 -preset ultrafast -tune zerolatency -profile:v baseline -level 3.0 -pix_fmt yuv420p -g 30 -b:v 2M -c:a aac -b:a 128k -ar 48000 -f rtsp {output}'
+  
+  # Example: Add your own RTSP camera
+  # my_camera:
+  #   - rtsp://username:password@camera-ip:554/stream
+  
+  # Example: Add HTTP/MJPEG camera
+  # mjpeg_camera:
+  #   - http://camera-ip/mjpeg
+  
+  # Example: FFmpeg from file or URL
+  # test_video:
+  #   - ffmpeg:http://example.com/video.mp4#video=copy
 
 api:
   listen: ":1984"
