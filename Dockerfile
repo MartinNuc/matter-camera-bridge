@@ -76,6 +76,7 @@ RUN apt-get update && apt-get install -y \
     ffmpeg \
     curl \
     jq \
+    unzip \
     libssl3 \
     libdbus-1-3 \
     libglib2.0-0 \
@@ -107,8 +108,10 @@ RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o 
     && chmod a+rx /usr/local/bin/yt-dlp
 
 # Install deno for yt-dlp JavaScript runtime
-RUN curl -fsSL https://deno.land/install.sh | sh \
-    && mv /root/.deno/bin/deno /usr/local/bin/deno
+RUN curl -fsSL https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip -o /tmp/deno.zip \
+    && unzip /tmp/deno.zip -d /usr/local/bin \
+    && chmod +x /usr/local/bin/deno \
+    && rm /tmp/deno.zip
 
 WORKDIR /app
 
