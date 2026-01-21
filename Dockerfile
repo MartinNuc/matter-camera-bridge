@@ -75,6 +75,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     curl \
+    jq \
     libssl3 \
     libdbus-1-3 \
     libglib2.0-0 \
