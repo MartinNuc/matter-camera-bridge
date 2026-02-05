@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var
 
 # Clone and build connectedhomeip SDK (this layer will be cached)
-RUN git clone --depth 1 --branch v1.5.1.0 https://github.com/project-chip/connectedhomeip.git
+RUN git clone --depth 1 --branch v1.5.0.1 https://github.com/project-chip/connectedhomeip.git
 
 WORKDIR /var/connectedhomeip
 
