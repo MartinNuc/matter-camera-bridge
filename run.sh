@@ -58,4 +58,5 @@ sleep 2
 
 echo ""
 echo "Starting Matter camera (port 5542, discriminator 3841)..."
-exec /app/matter-camera-bridge --discriminator 3841 --passcode 20202021 --secured-device-port 5542 --KVS /tmp/chip_kvs_camera
+echo "Using GStreamer test video source (no physical camera required)"
+exec /app/matter-camera-bridge --discriminator 3841 --passcode 20202021 --secured-device-port 5542 --KVS /tmp/chip_kvs_camera --camera-test-videosrc --camera-test-audiosrc

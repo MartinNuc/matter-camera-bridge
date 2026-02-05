@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var
 
 # Clone and build connectedhomeip SDK (this layer will be cached)
-RUN git clone --depth 1 --branch v1.5.0.0 https://github.com/project-chip/connectedhomeip.git
+RUN git clone --depth 1 --branch v1.5.1.0 https://github.com/project-chip/connectedhomeip.git
 
 WORKDIR /var/connectedhomeip
 
@@ -89,12 +89,15 @@ RUN apt-get update && apt-get install -y \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-ugly \
     gstreamer1.0-libav \
+    gstreamer1.0-tools \
     libgstreamer1.0-0 \
     libgstreamer-plugins-base1.0-0 \
     libavcodec60 \
     libavformat60 \
     libavutil58 \
     libcurl4 \
+    libsrtp2-1 \
+    libnice10 \
     iproute2 \
     iputils-ping \
     net-tools \
